@@ -1,24 +1,17 @@
 package application.monsters;
 
+import javafx.scene.Node;
+
 public abstract class Monster {
-  private Integer attackPower;
-  private Integer deffence;
-  private Integer magicPower;
-  private Integer speed;
+  protected String monsterName;
+  protected Integer attackPower;
+  protected Integer deffence;
+  protected Integer magicPower;
+  protected Integer speed;
   private Integer row;
   private Integer col;
 
-  public Monster(
-      Integer attackPower,
-      Integer deffence,
-      Integer magicPower,
-      Integer speed,
-      Integer row,
-      Integer col) {
-    this.attackPower = attackPower;
-    this.deffence = deffence;
-    this.magicPower = magicPower;
-    this.speed = speed;
+  public Monster(Integer row, Integer col) {
     this.row = row;
     this.col = col;
   }
@@ -29,4 +22,21 @@ public abstract class Monster {
   }
 
   public void attack() {};
+
+  @Override
+  public String toString() {
+    return "Monster [monsterName="
+        + monsterName
+        + ", attackPower="
+        + attackPower
+        + ", deffence="
+        + deffence
+        + ", magicPower="
+        + magicPower
+        + ", speed="
+        + speed
+        + "]";
+  }
+
+  public abstract Node getMonsterNode(double width, double height);
 }

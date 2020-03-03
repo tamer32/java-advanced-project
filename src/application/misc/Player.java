@@ -1,6 +1,8 @@
 package application.misc;
 
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 import application.magic.AttackOn;
 import application.magic.DeffenceUp;
@@ -18,21 +20,33 @@ import application.monsters.SophisticatedSam;
 
 public class Player {
   private String name;
-  private List<Monster> monsterCards;
-  private List<Magic> magicCards;
+  private List<Monster> monsterCards = new LinkedList<>();
+  private List<Magic> magicCards = new LinkedList<>();
+  private Random rand = new Random();
+  private List<Monster> monsterInHand = new LinkedList<>();
+  private List<Magic> magicInHand = new LinkedList<>();
+  private Integer mp;
 
   public Player(String name) {
     this.name = name;
     init();
   }
 
+  public Integer getMp() {
+    return mp;
+  }
+
+  public void setMp(Integer mp) {
+    this.mp = mp;
+  }
+
   public void init() {
-    monsterCards.add(new DogEatingBug(10, 2, 8, 5, -1, -1));
-    monsterCards.add(new DrunkenKnight(5, 5, 5, 5, -1, -1));
-    monsterCards.add(new MagicCat(8, 5, 10, 1, -1, -1));
-    monsterCards.add(new RecklessCanibal(4, 6, 8, 10, -1, -1));
-    monsterCards.add(new SandTurtle(5, 10, 1, 4, -1, -1));
-    monsterCards.add(new SophisticatedSam(10, 5, 4, 1, -1, -1));
+    monsterCards.add(new DogEatingBug(-1, -1));
+    monsterCards.add(new DrunkenKnight(-1, -1));
+    monsterCards.add(new MagicCat(-1, -1));
+    monsterCards.add(new RecklessCanibal(-1, -1));
+    monsterCards.add(new SandTurtle(-1, -1));
+    monsterCards.add(new SophisticatedSam(-1, -1));
     magicCards.add(new AttackOn());
     magicCards.add(new DeffenceUp());
     magicCards.add(new HealTheWorld());
@@ -40,13 +54,25 @@ public class Player {
     magicCards.add(new Warrr());
   }
 
-  public Monster drawMonster() {
-    return monsterCards.get(1);
-    // Add random generator;
+  public void drawMonster() {
+    int randomCard = rand.nextInt(6);
+    monsterInHand.add(monsterCards.get(randomCard));
   }
 
-  public Magic drawMagic() {
-    return magicCards.get(1);
-    // Add random generator
+  public void drawMagic() {
+    int randomMagick = rand.nextInt(5);
+    magicInHand.add(magicCards.get(randomMagick));
+  }
+
+  public List<Monster> getMonsterInHand() {
+    return monsterInHand;
+  }
+
+  public List<Magic> getMagicInHand() {
+    return magicInHand;
+  }
+
+  public Integer rollTheDice() {
+    return rand.nextInt(6);
   }
 }
