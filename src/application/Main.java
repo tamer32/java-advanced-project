@@ -13,7 +13,7 @@ public class Main extends Application {
   public void start(Stage primaryStage) throws IOException {
     Parent root = FXMLLoader.load(getClass().getResource("mainMenu.fxml"));
     primaryStage.setTitle("Pe-sho-oh");
-    primaryStage.setScene(new Scene(root, 1000, 900));
+    primaryStage.setScene(new Scene(root, 1050, 900));
     primaryStage.show();
   }
 

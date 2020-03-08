@@ -27,6 +27,6 @@ public class SandTurtle extends Monster {
     iv1.setFitWidth(width);
     iv1.setFitHeight(height);
     iv1.setPreserveRatio(false);
-    return label;
+    return iv1;
   }
 }
